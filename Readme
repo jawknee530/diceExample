@@ -1,0 +1,12 @@
+Instructions for running/testing program on Debian/Ubuntu distros
+
+Install node.js:
+
+  curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+  sudo apt-get install -y nodejs
+
+While in the project directory run 'npm install' to install dependencies
+
+While in the project directory run 'npm start' to run program
+
+Navigate to 'localhost:3000' to access the app for testing
