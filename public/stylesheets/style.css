@@ -1,16 +1,24 @@
-#roll{
+#roll {
   text-align: center;
   font-size:2em;
   border-radius:5px
 }
 
-/* Space out content a bit */
+#results {
+text-align: center
+} 
+
+ul li{
+  font-size:18px
+}
+
+/* Space out content a bit 
 body {
     text-align: center;
     padding-top: 20px;
     padding-bottom: 20px;
 }
-
+*/
 
 /* Customize container 
 @media (min-width: 768px) {

@@ -1,21 +1,26 @@
 extends layout
 
 block content
-  .container
+  .row
     .col-sm-2
     .jumbotron.col-sm-8
       h1 #{title}
     .col-sm-2
-  .container
-    p Input a 'roll' into the field below.
-    p A 'roll' consists of NdX where
-    p N is the number of dice to roll and X is the sides of the dice
-    p You can also add extra commands after NdX which are dY, kY, or xY where Y is a number less than N
-    p d will drop the Y lowest rolls, k will keep the Y highest rolls, and x will roll again if the result of a roll is greater than or equal to Y. 
-    p Examples: 2d6 4d8 5d6d2 3d10k1 4d4x2
-    input#roll(type="text", placeholder="Input Dice Roll")
-  .container
-    h2#results You haven't rolled yet!
+  .row
+    .col-sm-2
+    .col-sm-4
+      ul
+        li One die roll. dX: where X is any positive number. Roll 1 die with X sides, eg: d6 (results between 1 and 6 included)
+        li Dice roll. NdX: where N is any positive number, Roll N dice with X sides and sum, eg: 3d6 (results between 3 and 18 included)
+        li Drop lowest rolls. NdXdD: where D is any positive number lower than N. Roll N dice with X sides and drop the lowerst D and sum, eg: 5d6d2 ( results between 3 and 18 included)
+        li Keep highest rolls. NdXkK: where K is any positive number lower than N. Roll N dice with X sides and keep the highest K and sum, eg: 5d6k2 (results between 2 and 12 included)
+        li Exploseve roll. NdXxE: where E is any positive number equal or smaller than X. Roll N dice with X sides. For each value that is equal or greater than E roll again until no values need to be re-rolled. Sum all the rolled dice. Eg: 4d6x6 (results between 4 and infinity)
+        li Literal value. X: where X is any positive number, eg: 2 (result is always 2)
+    .col-sm-4
+      input#roll(type="text", placeholder="Input Dice Roll")
+      b
+      h2#results You haven't rolled yet!
+    .col-sm-2
 
   script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js") 
   script(src="/javascripts/main.js")
