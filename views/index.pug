@@ -16,11 +16,10 @@ block content
         li Keep highest rolls. NdXkK: where K is any positive number lower than N. Roll N dice with X sides and keep the highest K and sum, eg: 5d6k2 (results between 2 and 12 included)
         li Exploseve roll. NdXxE: where E is any positive number equal or smaller than X. Roll N dice with X sides. For each value that is equal or greater than E roll again until no values need to be re-rolled. Sum all the rolled dice. Eg: 4d6x6 (results between 4 and infinity)
         li Literal value. X: where X is any positive number, eg: 2 (result is always 2)
-    .col-sm-4
+    .col-sm-3
       input#roll(type="text", placeholder="Input Dice Roll")
-      b
       h2#results You haven't rolled yet!
-    .col-sm-2
+    .col-sm-3
 
   script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js") 
   script(src="/javascripts/main.js")
