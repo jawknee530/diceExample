@@ -16,9 +16,9 @@ router.get('/', function(req, res, next) {
   //save the expression string to the object
   roll.str = req.query.roll;
   if(!initCheckInput(roll.str)) {
-    res.send('Not a valid input');
+    res.send('Not a valid input, unrecognized character');
   } else if(!setCons(roll)) {
-    res.send('Not a valid input');
+    res.send('Not a valid input, conditional failure');
   } else {
     completeRolls(roll);
     console.log('completed rolls');
@@ -54,10 +54,27 @@ var completeRolls = function(roll) {
   if(roll.literal) { 
     roll.indivRolls.push(parseInt(roll.str));
     return;
+  } else if(roll.explosive) {
+    console.log('explosive rolls');
+    explosiveRolls(roll);
+    return;
   }
   var str = roll.str.split('d');
   for(var i = 0; i < parseInt(str[0]); i++) {
     roll.indivRolls.push(Math.floor(Math.random() * str[1])+1);
+  }
+}
+
+var explosiveRolls = function(roll) {
+  var str = roll.str.split('d');
+  var toComplete = parseInt(str[0]);
+  for(var i = 0; i < toComplete; i++) {
+    curRoll = Math.floor(Math.random() * str[1]) + 1;
+    roll.indivRolls.push(curRoll);
+    if(curRoll >= parseInt(roll.explosive)) { 
+      console.log('roll was higher');
+      i--;
+    }
   }
 }
 
@@ -93,10 +110,14 @@ var setCons = function(roll) {
   return true;
 }
 
-var checkSize = function(n, x) {
-  if(n > x && x > 0) {
+var checkSize = function(a, b) {
+  var n = parseInt(a);
+  var x = parseInt(b);
+  if((n > x) && (x > 0)) {
+    console.log('true');
     return true;
   } else {
+    console.log('false');
     return false;
   }
 }

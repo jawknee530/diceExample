@@ -2,15 +2,17 @@ extends layout
 
 block content
   .container
-    .jumbotron
+    .col-sm-2
+    .jumbotron.col-sm-8
       h1 #{title}
-      p Input a 'roll' into the field below.
-      p A 'roll' consists of NdX where
-      p N is the number of dice to roll and X is the sides of the dice
-      p You can also add extra commands after NdX which are dY, kY, or xY where Y is a number less than N
-      p d will drop the Y lowest rolls, k will keep the Y highest rolls, and x will roll again if the result of a roll is greater than or equal to Y. 
-      p Examples: 2d6 4d8 5d6d2 3d10k1 4d4x2
+    .col-sm-2
   .container
+    p Input a 'roll' into the field below.
+    p A 'roll' consists of NdX where
+    p N is the number of dice to roll and X is the sides of the dice
+    p You can also add extra commands after NdX which are dY, kY, or xY where Y is a number less than N
+    p d will drop the Y lowest rolls, k will keep the Y highest rolls, and x will roll again if the result of a roll is greater than or equal to Y. 
+    p Examples: 2d6 4d8 5d6d2 3d10k1 4d4x2
     input#roll(type="text", placeholder="Input Dice Roll")
   .container
     h2#results You haven't rolled yet!

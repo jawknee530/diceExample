@@ -1,8 +1,3 @@
-
-a {
-  color: #00B7FF;
-}
-
 #roll{
   text-align: center;
   font-size:2em;
@@ -17,17 +12,17 @@ body {
 }
 
 
-/* Customize container */
+/* Customize container 
 @media (min-width: 768px) {
     .container {
         max-width: 730px;
     }
 }
+*/
 
 /* Main marketing message and sign up button */
 .jumbotron {
     text-align: center;
-    border-bottom: 1px solid #e5e5e5;
 }
 
 
