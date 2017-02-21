@@ -36,6 +36,7 @@ var computeResult = function(roll) {
   console.log('got length')
   if(roll.literal) {
     roll.result = roll.indivRolls[0];
+    return;
   } else if(roll.lowest){
     roll.indivRolls.sort(compareNumbers)
     roll.indivRolls = roll.indivRolls.slice(roll.lowest, rollsLen)
