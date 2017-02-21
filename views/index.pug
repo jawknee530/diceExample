@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  .container
+    .jumbotron
+      h1 #{title}
+      p Welcome to #{title}
+  .container
+    input#roll(type="text", placeholder="Input Dice Roll")
+  .container
+    h2#results You haven't rolled yet!
+
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js") 
+  script(src="/javascripts/main.js")

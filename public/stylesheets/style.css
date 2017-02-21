@@ -1,0 +1,33 @@
+
+a {
+  color: #00B7FF;
+}
+
+#roll{
+  text-align: center;
+  font-size:2em;
+  border-radius:5px
+}
+
+/* Space out content a bit */
+body {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+/* Customize container */
+@media (min-width: 768px) {
+    .container {
+        max-width: 730px;
+    }
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+
