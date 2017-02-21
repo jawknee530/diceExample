@@ -6,11 +6,11 @@ $(function (){
         roll: $(this).val()
       };
 
-      $('#results').hide();
+      //$('#results').hide();
 
       $.get('/roll', params, function(data) {
         console.log(data)
-        $('#results').text(data).fadeIn(800);
+        $('#results').text(data);//.fadeIn(800);
       });
     };
   });
