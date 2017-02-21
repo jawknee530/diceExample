@@ -60,7 +60,13 @@ var completeRolls = function(roll) {
     explosiveRolls(roll);
     return;
   }
-  var str = roll.str.split('d');
+  if(roll.str.charAt(0) === 'd') {
+    str = []
+    str[0] = 1;
+    str[1] = roll.str.slice(1, roll.str.length);
+  } else {
+    var str = roll.str.split('d');
+  }
   for(var i = 0; i < parseInt(str[0]); i++) {
     roll.indivRolls.push(Math.floor(Math.random() * str[1])+1);
   }
