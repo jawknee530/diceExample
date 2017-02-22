@@ -3,30 +3,76 @@ var router = express.Router();
 
 router.get('/', function(req, res, next) {
   //create the expression object
-  var roll = {
-      lowest: 0,
-      highest: 0,
-      explosive: 0,
-      multiple: 0,
-      literal: false,
-      indivRolls: [],
-      result: 0,
-      str: ''
-  };
-  //save the expression string to the object
-  roll.str = req.query.roll;
-  if(!initCheckInput(roll.str)) {
-    res.send('Not a valid input, unrecognized character');
-  } else if(!setCons(roll)) {
-    res.send('Not a valid input, conditional failure');
+  var expr = {
+    rolls: [],
+    arith: '',
+    result: 0,
+    str: ''
+  }
+
+  expr.str = req.query.roll;
+  message = solveExpr(expr);
+  res.send(message);
+});
+
+var solveExpr = function(expr) {
+  var strs = [];
+  if(!initCheckInput(expr.str)) {
+    return 'Not a valid input, unrecognized character';
+  }
+  expr.str = expr.str.replace(/ /g, '');
+  console.log(expr.str);
+  if(expr.str.includes('+')) {
+    expr.arith = '+';
+    strs = expr.str.split('+');
+  } else if (expr.str.includes('-')) {
+    expr.arith = '-';
+    strs = expr.str.split('-');
+  } else {
+    strs[0] = expr.str;
+  }
+  buildRolls(expr, strs);
+  getFinalResult(expr);
+  return expr.result.toString();
+}
+
+var getFinalResult = function(expr) {
+  if(expr.arith === '+') {
+    expr.result = expr.rolls[0].result + expr.rolls[1].result;
+  } else if(expr.arith === '-') {
+    expr.result = expr.rolls[0].result - expr.rolls[1].result;
+  } else {
+    expr.result = expr.rolls[0].result;
+  }
+}
+var buildRolls = function(expr, strs) {
+  console.log('building rolls');
+  for(var i = 0; i < strs.length; i++) {
+    expr.rolls[i] = {
+        lowest: 0,
+        highest: 0,
+        explosive: 0,
+        multiple: 0,
+        literal: false,
+        indivRolls: [],
+        result: 0,
+        str: strs[i]
+    };
+    expr.rolls[i].result = startRolls(expr.rolls[i]);
+  }
+  console.log(expr);
+}
+
+
+var startRolls = function(roll) {
+  if(!setCons(roll)) {
+    return 'Not a valid input, conditional failure'
   } else {
     completeRolls(roll);
-    console.log('completed rolls');
     computeResult(roll);
-    console.log(roll);
-    res.send(roll.result.toString());
+    return roll.result;
   }
-});
+}
 
 var compareNumbers = function(a, b) {
   return a-b;
