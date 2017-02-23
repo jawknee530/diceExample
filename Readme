@@ -10,3 +10,14 @@ While in the project directory run 'npm install' to install dependencies
 While in the project directory run 'npm start' to run program
 
 Navigate to 'localhost:3000' to access the app for testing
+
+--------------------------------------------------------------------------------
+
+Application written using node.js using the express.js generator to create the
+skeleton of the app. JQuery AJAX library used for communication between the
+front and back ends. Bootstrap used for front end.
+
+Application is currently hosted on a Digital Ocean server running nginx at: 
+  http://http://138.68.234.229/
+
+Heavy lifting and application core is in routes/roll.js
