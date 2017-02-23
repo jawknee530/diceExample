@@ -9,7 +9,9 @@ While in the project directory run 'npm install' to install dependencies
 
 While in the project directory run 'npm start' to run program
 
-Navigate to 'localhost:3000' to access the app for testing
+Navigate to 'localhost:3000' in a browser to access the app for testing
+
+You can also send GET requests with the format 127.0.0.1:3000/roll?roll=<ROLL>
 
 --------------------------------------------------------------------------------
 
